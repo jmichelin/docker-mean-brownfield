@@ -29,3 +29,7 @@ A guide to setting up your docker container on AWS using the MEAN stack
 mkdir ~/.aws && echo -e '[default]\naws_access_key_id = [access key from file]\naws_secret_access_key = [secret key from file]' > ~/.aws/credentials
 ```
 - [ ] Get vpc-id
+![Create IAM user](./assets/images/12-brownfield-aws-vpcid-1.png "Logo Title Text 6")
+![Create IAM user](./assets/images/13-brownfield-aws-vpcid-2.png "Logo Title Text 6")
+![Create IAM user](./assets/images/14-brownfield-aws-vpcid-3.png "Logo Title Text 6")
+
