@@ -56,4 +56,5 @@ To see how to connect your Docker Client to the Docker Engine running on this vi
 
 Once everything has settled we must instruct docker to execute on our new EC2.
 ```bash
-$ eval $(docker-machine env aws-mean)```
+$ eval $(docker-machine env aws-mean)
+```
