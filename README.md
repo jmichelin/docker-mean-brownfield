@@ -15,7 +15,7 @@ A guide to setting up your docker container on AWS using the MEAN stack
 
  ![Open IAM](./assets/images/03-brownfield-aws-iam.png "Logo Title Text 3")
 
-- [ ] Click the `user` menu item on the left to open the user management dashboard
+- [ ] Click the `users` menu item on the left to open the user management dashboard
 
  ![Create IAM user](./assets/images/04-brownfield-aws-iam-user.png "Logo Title Text 4")
 
