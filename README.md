@@ -129,7 +129,7 @@ $ npm i grunt # might not need this
 
 - [ ] Select the inbound tab. We are going to be adding HTTP to the rules, along side the SSH that is already there.
 - [ ] Click edit and then Add
-![Create IAM user](./assets/images/15-brownfield-aws-ec2-security-1.png "Logo Title Text 6")
-![Create IAM user](./assets/images/15-brownfield-aws-ec2-security-1.png "Logo Title Text 6")
+![Create IAM user](./assets/images/16-brownfield-aws-ec2-security-2.png "Logo Title Text 6")
+![Create IAM user](./assets/images/17-brownfield-aws-ec2-security-3.png "Logo Title Text 6")
 
 
