@@ -1,6 +1,10 @@
 # docker-mean-brownfield
 A guide to setting up your docker container on AWS using the MEAN stack
 
+## Prerequisite 
+- [ ] Install Docker
+- [ ] 
+
 ## Project Setup
 
 - [ ] Create an account at [aws.amazon.com](https://aws.amazon.com/ "AWS"). Make sure you sign up for the Basic plan, as that is the free tier.
@@ -131,5 +135,13 @@ $ npm i grunt # might not need this
 - [ ] Click edit and then Add
 ![Create IAM user](./assets/images/16-brownfield-aws-ec2-security-2.png "Logo Title Text 6")
 ![Create IAM user](./assets/images/17-brownfield-aws-ec2-security-3.png "Logo Title Text 6")
+
+- [ ] Find the public address and head there in your browser. 
+
+![Create IAM user](./assets/images/18-brownfield-aws-get-url.png "Logo Title Text 6")
+
+If you see the splash page you're ready to get started!
+
+
 
 
