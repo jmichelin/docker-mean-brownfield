@@ -57,3 +57,8 @@ typings/
 # dotenv environment variables file
 .env
 
+# aws credentials
+credentials.csv
+
+# my local notes
+notes.md

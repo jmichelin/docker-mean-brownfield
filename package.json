@@ -1,0 +1,28 @@
+{
+  "name": "docker-mean-brownfield",
+  "version": "1.0.0",
+  "description": "A guide to setting up your docker container on AWS using the MEAN stack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmichelin/docker-mean-brownfield.git"
+  },
+  "keywords": [],
+  "author": "John Michelin <john@javascriptjohn.com> (http://www.javascriptjohn.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jmichelin/docker-mean-brownfield/issues"
+  },
+  "homepage": "https://github.com/jmichelin/docker-mean-brownfield#readme",
+  "devDependencies": {
+    "cz-conventional-changelog": "2.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
