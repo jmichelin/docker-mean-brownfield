@@ -2,7 +2,9 @@
 A guide to setting up your docker container on AWS using the MEAN stack
 
 ## Prerequisite 
-- [ ] Install Docker
+- [ ] Docker [docker.com](https://docs.docker.com/engine/installation/ "AWS")
+- [ ] GIT
+- [ ] AWS CLI
 
 ## Project Setup
 
@@ -53,14 +55,21 @@ A guide to setting up your docker container on AWS using the MEAN stack
 mkdir ~/.aws && echo -e '[default]\naws_access_key_id = [access key from file]\naws_secret_access_key = [secret key from file]' > ~/.aws/credentials
 ```
 
-- [ ] Get vpc-id
+- [ ] Get vpc-id by clicking on VPC from list
 ![Create IAM user](./assets/images/12-brownfield-aws-vpcid-1.png "Logo Title Text 6")
+- [ ] Click the VPC link under your listing of Amazon VPC resources
 ![Create IAM user](./assets/images/13-brownfield-aws-vpcid-2.png "Logo Title Text 6")
 ![Create IAM user](./assets/images/14-brownfield-aws-vpcid-3.png "Logo Title Text 6")
 
 We now have everything to fire up a new EC2 instance from a shell on your computer. (use `aws ec2 describe-subnets
 ` to find your available subnets)
-
+#### useful commands
+```bash
+aws ec2 describe-regions #(http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-regions.html)
+aws ec2 describe-availability-zones #(http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-availability-zones.html)
+aws ec2 describe-vpcs #(http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-vpcs.html)
+aws ec2 describe-subnets #(http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-subnets.html)
+```
 ```bash
 $ docker-machine create --driver amazonec2  --amazonec2-vpc-id [your-vpc-id] --amazonec2-zone a aws-mean
 Running pre-create checks...
