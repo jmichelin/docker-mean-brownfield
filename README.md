@@ -66,10 +66,86 @@ We now have everything to fire up a new EC2 instance from a shell on your comput
 #### useful commands
 ```bash
 aws ec2 describe-regions #(http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-regions.html)
-aws ec2 describe-availability-zones #(http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-availability-zones.html)
 aws ec2 describe-vpcs #(http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-vpcs.html)
+aws ec2 describe-availability-zones #(http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-availability-zones.html)
 aws ec2 describe-subnets #(http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-subnets.html)
 ```
+- [ ] Take note of your region, verify that you see us-east-# or us-west-# and record the available values, these will inform the `--amazonec2-region` flag below
+```bash
+$ aws ec2 describe-regions
+{
+    "Regions": [
+        {...},
+        {
+            "Endpoint": "ec2.us-east-1.amazonaws.com",
+            "RegionName": "us-east-1"
+        },
+        {
+            "Endpoint": "ec2.us-east-2.amazonaws.com",
+            "RegionName": "us-east-2"
+        },
+        {
+            "Endpoint": "ec2.us-west-1.amazonaws.com",
+            "RegionName": "us-west-1"
+        },
+        {
+            "Endpoint": "ec2.us-west-2.amazonaws.com",
+            "RegionName": "us-west-2"
+        }
+    ]
+}
+
+
+```
+
+- [ ] Now we need to verify the vpc-id we grabbed earlier.
+
+```bash
+$ aws ec2 describe-vpcs
+{
+    "Vpcs": [
+        {
+            "VpcId": "vpc-da394bb3",
+            "InstanceTenancy": "default",
+            "State": "available",
+            "DhcpOptionsId": "dopt-b5ed95dc",
+            "CidrBlock": "172.31.0.0/16",
+            "IsDefault": true
+        }
+    ]
+}
+
+```
+
+- [ ] Now we need to verify our availability zones. Take note of the letter at the end of the zone name. This will inform the `--amazonec2-zone` flag below.
+
+```bash
+$ aws ec2 describe-availability-zones
+{
+    "AvailabilityZones": [
+        {
+            "State": "available",
+            "ZoneName": "us-east-2a",
+            "Messages": [],
+            "RegionName": "us-east-2"
+        },
+        {
+            "State": "available",
+            "ZoneName": "us-east-2b",
+            "Messages": [],
+            "RegionName": "us-east-2"
+        },
+        {
+            "State": "available",
+            "ZoneName": "us-east-2c",
+            "Messages": [],
+            "RegionName": "us-east-2"
+        }
+    ]
+}
+
+```
+
 ```bash
 $ docker-machine create --driver amazonec2 --amazonec2-region us-east-2 --amazonec2-vpc-id vpc-da394bb3 --amazonec2-zone a aws-mean
 Running pre-create checks...
@@ -87,6 +163,41 @@ Setting Docker configuration on the remote daemon...
 Checking connection to Docker...
 Docker is up and running!
 To see how to connect your Docker Client to the Docker Engine running on this virtual machine, run: docker-machine env aws-mean
+```
+
+# Error
+You may see the following error:
+```bash
+Running pre-create checks...
+Creating machine...
+(aws-mean) Launching instance...
+Waiting for machine to be running, this may take a few minutes...
+Detecting operating system of created instance...
+Waiting for SSH to be available...
+Detecting the provisioner...
+Provisioning with ubuntu(systemd)...
+Installing Docker...
+Copying certs to the local machine directory...
+Copying certs to the remote machine...
+Setting Docker configuration on the remote daemon...
+Checking connection to Docker...
+Error creating machine: Error checking the host: Error checking and/or regenerating the certs: There was an error validating certificates for host "52.15.254.241:2376": dial tcp 52.15.254.241:2376: getsockopt: connection refused
+You can attempt to regenerate them using 'docker-machine regenerate-certs [name]'.
+Be advised that this will trigger a Docker daemon restart which might stop running containers.
+```
+
+- [ ] Verify that you can ssh into the machine
+```bash
+$ docker-machine ssh aws-mean
+
+#once connected
+
+ubuntu@aws-mean:~$ sudo apt-get update
+ubuntu@aws-mean:~$ sudo apt-get upgrade
+ubuntu@aws-mean:~$ sudo apt-get upgrade
+??ubuntu@aws-mean:~$ sudo apt-get install docker
+
+
 ```
 
 Once everything has settled we must instruct docker to execute on our new EC2.
@@ -127,9 +238,10 @@ $ git clone https://github.com/meanjs/mean.git meanjs #grab the latest meanjs st
 $ cd meanjs
 $ ls #verify the clone
 $ npm install -g n #install n to manage node versions https://github.com/tj/n
+$ n 6 #or whatever version of node you are using
 $ npm i
 $ bower install --allow-root
-$ npm i grunt # might not need this
+
 ```
 
 # Security on our instance
@@ -148,7 +260,8 @@ $ npm i grunt # might not need this
 
 ![Create IAM user](./assets/images/18-brownfield-aws-get-url.png "Logo Title Text 6")
 
-If you see the splash page you're ready to get started!
+- [ ] If you see the splash page you're ready to get started!
+![Create IAM user](./assets/images/19-brownfield-aws-mean-splash.png "Logo Title Text 6")
 
 
 
