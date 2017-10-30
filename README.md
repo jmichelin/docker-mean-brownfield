@@ -61,7 +61,7 @@ mkdir ~/.aws && echo -e '[default]\naws_access_key_id = [access key from file]\n
 ![Create IAM user](./assets/images/13-brownfield-aws-vpcid-2.png "Logo Title Text 6")
 ![Create IAM user](./assets/images/14-brownfield-aws-vpcid-3.png "Logo Title Text 6")
 
-We now have everything to fire up a new EC2 instance from a shell on your computer. (use `aws ec2 describe-subnets
+We now have everything to fire up a new EC2 instance from a shell on your computer. You may need to use `sudo` for these commands. (use `aws ec2 describe-subnets
 ` to find your available subnets)
 #### useful commands
 ```bash
